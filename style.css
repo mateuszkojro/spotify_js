@@ -1,0 +1,18 @@
+body{
+    /* background: lightgray; */
+    text-align: center;
+    padding: 5%;
+}
+h1 {
+    background: white;
+}
+h2 {
+    background: blue;
+}
+h3 {
+    background: lightblue;
+}
+
+.ui-tabs-panel{
+    background: red;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>Mateusz Kojro - portfolio</title>
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+    </head>
+    <body>
+        <div id="main">
+            <h1> {{ heading1 }} </h1>
+            <p>
+                <h2> {{ heading2 }} </h2>
+                <div id="accordion">
+                    <h3> {{ acd_title_1 }} </h3>
+                    <div>
+                        <p>
+
+                            {{ acd_text_1 }}
+                        </p>
+                    </div>
+                    <h3> {{ acd_title_2 }} </h3>
+                    <div>
+                        <p>
+                            {{ acd_text_2 }}
+                        </p>
+                    </div>
+                    <h3> {{ acd_title_3 }} </h3>
+                    <div>
+                        <p>
+                            {{ acd_text_3 }}
+                        </p>
+                    </div>
+                </div>
+            </p>
+        </div>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tab1"> {{ tab1_title }} </a></li>
+                <li><a href="#tab2"> {{ tab2_title }} </a></li>
+                <li><a href="#tab3"> {{ tab3_title }} </a></li>
+            </ul>
+            <div id="tab1">
+                <p> {{ tab1_text }} </p>
+            </div>
+            <div id="tab2">
+                <p> {{ tab2_text }} </p>
+            </div>
+            <div id="tab3">
+                <p> {{ tab3_text }} </p>
+            </div>
+        </div>
+        <script
+        src="http://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+        <script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+        
+        <script src="vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
