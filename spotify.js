@@ -34,11 +34,6 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
     app.title = message;
   });
 
-  // Playback status updates
-  player.addListener("player_state_changed", (state) => {
-    app.title = "Reciving";
-  });
-
   // Ready
   player.addListener("ready", ({ device_id }) => {
     app.title = "Ready";
@@ -49,9 +44,14 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
     app.title = "Device has gone offline";
   });
 
-  player.getCurrentState().then((state) => {
-    console.log(state);
-  });
+  player.addListener(
+    "player_state_changed",
+    ({ position, duration, track_window: { current_track } }) => {
+      console.log("Currently Playing", current_track);
+      console.log("Position in Song", position);
+      console.log("Duration of Song", duration);
+    }
+  );
   // Connect to the player!
   player.connect();
 };

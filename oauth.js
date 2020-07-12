@@ -38,9 +38,7 @@ class oauth2 {
     async function close() {
       window.close();
     }
-    //close();
     window.open(url);
-    //fetch(url);
   }
   async request_tokens() {
     let url = "https://accounts.spotify.com/api/token";
