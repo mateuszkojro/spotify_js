@@ -1,6 +1,19 @@
+html {
+  scroll-behavior: smooth;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Fira Sans", Tahoma, Helvetica, sans-serif;
+
+  -webkit-animation: fadein 5s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 5s;
+  /* Firefox < 16 */
+  -o-animation: fadein 5s;
+  /* Opera < 12.1 */
+  animation: fadein 5s;
+}
 body {
   /* background: lightgray; */
-  font-family: Gill Sans, sans-serif;
   color: #ccccccff;
   text-align: center;
   background: black;
