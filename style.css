@@ -1,18 +1,27 @@
-body{
-    /* background: lightgray; */
-    text-align: center;
-    padding: 5%;
+body {
+  /* background: lightgray; */
+  font-family: Gill Sans, sans-serif;
+  color: white;
+  text-align: center;
+  background: black;
+  padding: 5%;
+  text-align: center;
 }
 h1 {
-    background: white;
+  /* background: white; */
 }
 h2 {
-    background: blue;
+  background: green;
 }
 h3 {
-    background: lightblue;
+  background: #646464;
 }
 
-.ui-tabs-panel{
-    background: red;
+.ui-tabs-panel {
+  background: red;
+}
+table {
+  padding: inherit;
+  text-align: center;
+  width: 100%;
 }
