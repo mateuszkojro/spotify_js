@@ -84,3 +84,17 @@ class oauth2 {
     this.refresh_token = this.json.refresh_token;
   }
 }
+
+async function get_auth() {
+  let searchParams = new URLSearchParams(window.location.search);
+  let auth = new oauth2();
+  if (!searchParams.has("code")) {
+    auth.request_auth();
+  }
+  if (searchParams.has("code")) {
+    auth.code = searchParams.get("code");
+    auth.state = searchParams.get("state");
+    await auth.request_tokens();
+  }
+  return auth;
+}

@@ -1,17 +1,14 @@
+var app = new Vue({
+  el: "#app",
+  data: {
+    title: "Loading",
+    previous: "Previous",
+    pause: "Pause",
+    next: "Next",
+  },
+});
+
 let x = null;
-async function get_auth() {
-  let searchParams = new URLSearchParams(window.location.search);
-  let auth = new oauth2();
-  if (!searchParams.has("code")) {
-    auth.request_auth();
-  }
-  if (searchParams.has("code")) {
-    auth.code = searchParams.get("code");
-    auth.state = searchParams.get("state");
-    await auth.request_tokens();
-  }
-  return auth;
-}
 window.onSpotifyWebPlaybackSDKReady = async () => {
   //console.log("zaczekalem na token: " + (await get_auth()).access_token);
   const token = (await get_auth()).access_token;
@@ -25,52 +22,35 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
   x = player;
   // Error handling
   player.addListener("initialization_error", ({ message }) => {
-    console.error(message);
+    app.title = message;
   });
   player.addListener("authentication_error", ({ message }) => {
-    console.error(message);
+    app.title = message;
   });
   player.addListener("account_error", ({ message }) => {
-    console.error(message);
+    app.title = message;
   });
   player.addListener("playback_error", ({ message }) => {
-    console.error(message);
+    app.title = message;
   });
 
   // Playback status updates
   player.addListener("player_state_changed", (state) => {
-    if (!state) {
-      document.getElementById("inside_spotify").innerHTML =
-        "Nothing is curently playing";
-      return;
-    }
-
-    let {
-      curent_song,
-      next_tracks: [next_track],
-    } = state.track_window;
-
-    document.getElementById("inside_spotify").innerHTML =
-      "curently playing: " + curent_song;
-
-    console.log(state);
+    app.title = "Reciving";
   });
 
   // Ready
   player.addListener("ready", ({ device_id }) => {
-    console.log("Ready with Device ID", device_id);
-    //document.getElementById("inside_spotify").innerHTML = "Your device id: " + device_id;
+    app.title = "Ready";
   });
 
   // Not Ready
   player.addListener("not_ready", ({ device_id }) => {
-    console.log("Device ID has gone offline", device_id);
-    document.getElementById("inside_spotify").innerHTML =
-      "Device offline: " + device_id;
+    app.title = "Device has gone offline";
   });
 
   player.getCurrentState().then((state) => {
-    console.log("dziala");
+    console.log(state);
   });
   // Connect to the player!
   player.connect();

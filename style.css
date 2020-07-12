@@ -1,27 +1,28 @@
 body {
   /* background: lightgray; */
   font-family: Gill Sans, sans-serif;
-  color: white;
+  color: #ccccccff;
   text-align: center;
   background: black;
-  padding: 5%;
+  /*padding: 5%;*/
   text-align: center;
 }
-h1 {
-  /* background: white; */
-}
-h2 {
-  background: green;
-}
-h3 {
-  background: #646464;
-}
 
-.ui-tabs-panel {
-  background: red;
-}
 table {
   padding: inherit;
   text-align: center;
   width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+button {
+  border: #ccccccff;
+  background-color: black;
+  border-radius: 20px;
+}
+img {
+  border-width: 0;
+  background-color: black;
+  width: 10%;
+  height: 5%;
 }
