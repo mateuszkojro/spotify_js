@@ -33,7 +33,8 @@ class oauth2 {
         client_id: this.client_id,
         response_type: "code",
         redirect_uri: this.callback_uri,
-        scope: "streaming user-read-email user-read-private",
+        scope:
+          "streaming user-read-email user-read-private user-modify-playback-state user-read-playback-state ",
       });
     async function close() {
       window.close();

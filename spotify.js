@@ -9,10 +9,14 @@ var app = new Vue({
 });
 
 let x = null;
+let current_id = null;
+let current_token = null;
+
 window.onSpotifyWebPlaybackSDKReady = async () => {
   //console.log("zaczekalem na token: " + (await get_auth()).access_token);
   const token = (await get_auth()).access_token;
   console.log("this is your token: " + token);
+  current_token = token;
   var player = new Spotify.Player({
     name: "Spotify server player",
     getOAuthToken: (cb) => {
@@ -36,8 +40,9 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
 
   // Ready
   player.addListener("ready", ({ device_id }) => {
+    current_id = device_id;
     app.title =
-      'Ready <a onclick="take_control() href="null">take control of the player</a>';
+      'Ready <div onclick="take_control()" style="cursor: pointer; text-decoration: underline; color: blueviolet">take controlr</div>  of the player';
   });
 
   // Not Ready
@@ -94,5 +99,64 @@ function next() {
     x.nextTrack().then(() => {
       console.log("Skipped to next track!");
     });
+  }
+}
+
+function take_control() {
+  if (x != null) {
+    let url = "https://api.spotify.com/v1/me/player";
+    let data = {
+      device_ids: [current_id],
+      play: true,
+    };
+    console.log(current_id);
+    let other_params = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${current_token}`,
+      },
+      body: `{ "device_ids" : ["${current_id}"], "play" : false}`,
+      method: "PUT",
+    };
+    console.log(data);
+    fetch(url, other_params)
+      .then((data) => {
+        return data.json();
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+}
+
+function get_currently_playing() {
+  if (x != null) {
+    let url = "https://api.spotify.com/v1/me/player/currently-playing";
+
+    console.log(current_id);
+    let other_params = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${current_token}`,
+      },
+      //body: data,
+      method: "GET",
+    };
+
+    fetch(url, other_params)
+      .then((data) => {
+        return data.json();
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
