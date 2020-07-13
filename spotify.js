@@ -5,8 +5,16 @@ var app = new Vue({
     previous: "Previous",
     pause: "Pause",
     next: "Next",
+    stop: '<img src="start.svg" alt="Pause" />',
   },
 });
+
+async function set_play() {
+  app.stop = '<img src="pause.svg" alt="Pause" />';
+}
+async function set_pause() {
+  app.stop = '<img src="start.svg" alt="Play" />';
+}
 
 let x = null;
 let current_id = null;
@@ -72,6 +80,11 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
           Math.round((state.position / state.duration) * 100) +
           "% into " +
           state.track_window.current_track.name;
+        if (state.paused) {
+          set_pause();
+        } else {
+          set_play();
+        }
       } else {
       }
     });
@@ -90,6 +103,11 @@ function prev() {
 function stop() {
   if (x != null) {
     x.togglePlay().then(() => {
+      if (is_playing()) {
+        set_pause();
+      } else {
+        set_play();
+      }
       console.log("Toggled playback!");
     });
   }
@@ -147,7 +165,6 @@ function get_currently_playing() {
       //body: data,
       method: "GET",
     };
-
     fetch(url, other_params)
       .then((data) => {
         return data.json();
@@ -159,4 +176,32 @@ function get_currently_playing() {
         console.log(error);
       });
   }
+}
+
+async function is_playing() {
+  if (x != null) {
+    let url = "https://api.spotify.com/v1/me/player/currently-playing";
+
+    console.log(current_id);
+    let other_params = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${current_token}`,
+      },
+      method: "GET",
+    };
+    let response = null;
+    fetch(url, other_params)
+      .then((data) => {
+        return data.json();
+      })
+      .then((res) => {
+        response = res;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  return response;
 }
