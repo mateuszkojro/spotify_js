@@ -3,5 +3,5 @@ Spotify client written in browser side js
 
 ## Todo
 * [ ] Electron
-* [*] Show currently playing
+* [+] Show currently playing
 * [ ] Node 
