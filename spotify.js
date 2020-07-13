@@ -25,7 +25,7 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
     app.title = message;
   });
   player.addListener("authentication_error", ({ message }) => {
-    app.title = message;
+    app.title = `${message} pls <a href="\\">log in</a> again`;
   });
   player.addListener("account_error", ({ message }) => {
     app.title = message;
@@ -36,7 +36,8 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
 
   // Ready
   player.addListener("ready", ({ device_id }) => {
-    app.title = "Ready";
+    app.title =
+      'Ready <a onclick="take_control() href="null">take control of the player</a>';
   });
 
   // Not Ready
@@ -47,14 +48,32 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
   player.addListener(
     "player_state_changed",
     ({ position, duration, track_window: { current_track } }) => {
-      console.log("Currently Playing", current_track);
+      app.title =
+        "U r " +
+        Math.round((position / duration) * 100) +
+        "% into " +
+        current_track.name;
+      console.log("Currently Playing", current_track.name);
       console.log("Position in Song", position);
       console.log("Duration of Song", duration);
     }
   );
   // Connect to the player!
+  setInterval(function () {
+    player.getCurrentState().then((state) => {
+      if (state) {
+        app.title =
+          "U r " +
+          Math.round((state.position / state.duration) * 100) +
+          "% into " +
+          state.track_window.current_track.name;
+      } else {
+      }
+    });
+  }, 3000); //evr 3 sekundy
   player.connect();
 };
+function refresh_data(player) {}
 
 function prev() {
   if (x != null) {

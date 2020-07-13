@@ -2,7 +2,7 @@
 // przeprowadzenie oauth2
 //
 class oauth2 {
-  callback_uri = "https://mateuszkojro.github.io/spotify_js/play.html";
+  callback_uri = "http://localhost:5500/play.html";
   client_id = "280bd01d22924fb594c56c01bd47b077";
   client_secret = "3b365fc6cb2b4c14b64036a1bfc9b8a4";
   code = null;

@@ -11,6 +11,13 @@ html {
   -o-animation: fadein 5s;
   /* Opera < 12.1 */
   animation: fadein 5s;
+  -webkit-animation: fadeout 5s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeout 5s;
+  /* Firefox < 16 */
+  -o-animation: fadeout 5s;
+  /* Opera < 12.1 */
+  animation: fadeout 5s;
 }
 body {
   /* background: lightgray; */
@@ -40,5 +47,5 @@ img {
   border-width: 2;
   background-color: black;
   width: 10%;
-  height: 40%;
+  height: 80%;
 }
