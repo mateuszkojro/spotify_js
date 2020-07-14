@@ -1,0 +1,51 @@
+html {
+  scroll-behavior: smooth;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Fira Sans", Tahoma, Helvetica, sans-serif;
+
+  -webkit-animation: fadein 5s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 5s;
+  /* Firefox < 16 */
+  -o-animation: fadein 5s;
+  /* Opera < 12.1 */
+  animation: fadein 5s;
+  -webkit-animation: fadeout 5s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeout 5s;
+  /* Firefox < 16 */
+  -o-animation: fadeout 5s;
+  /* Opera < 12.1 */
+  animation: fadeout 5s;
+}
+body {
+  /* background: lightgray; */
+  color: #ccccccff;
+  text-align: center;
+  background: black;
+  /*padding: 5%;*/
+  text-align: center;
+}
+h1 {
+  font-size: 300%;
+}
+table {
+  padding: inherit;
+  text-align: center;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+button {
+  border: #ccccccff;
+  background-color: black;
+  border-radius: 20px;
+}
+img {
+  cursor: pointer;
+  border-width: 2;
+  background-color: black;
+  width: 10%;
+  height: 80%;
+}

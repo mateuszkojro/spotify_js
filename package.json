@@ -1,0 +1,22 @@
+{
+  "name": "spotify_js",
+  "version": "1.0.0",
+  "description": "Spotify client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateuszkojro/spotify_js.git"
+  },
+  "author": "Mateusz Kojro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateuszkojro/spotify_js/issues"
+  },
+  "homepage": "https://github.com/mateuszkojro/spotify_js#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
