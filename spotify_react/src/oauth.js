@@ -3,20 +3,6 @@
 //
 
 module.exports = {
-  get_auth: async function get_auth() {
-    let searchParams = new URLSearchParams(window.location.search);
-    let auth = new oauth2();
-    if (!searchParams.has("code")) {
-      auth.request_auth();
-    }
-    if (searchParams.has("code")) {
-      auth.code = searchParams.get("code");
-      auth.state = searchParams.get("state");
-      await auth.request_tokens();
-    }
-    return auth;
-  },
-
   oauth2: class {
     callback_uri = "https://mateuszkojro.github.io/spotify_js/play.html";
     client_id = "280bd01d22924fb594c56c01bd47b077";

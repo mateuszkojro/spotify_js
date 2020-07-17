@@ -1,8 +1,10 @@
 const express = require("express");
 const port = 3000;
 
-let oauth = require("oauth.js");
-const auth = oauth.oauth();
+let oauth = require("./oauth.js");
+const auth = new oauth.oauth2();
+
+const app = express();
 
 app.use("/", (req, res) => {
   app.render("index.html", (err) => {
