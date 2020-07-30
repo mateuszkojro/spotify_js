@@ -5,7 +5,7 @@ Spotify client written in browser side js
 * [ ] Electron
 * [ ] Show currently playing
 * [ ] Node 
-* historia [ ]
-* otwieranie yt [ ]
-* prawdziwe losowanie [ ]
-* custom liked playlist [ ]
+* [ ] historia 
+* [ ] otwieranie yt 
+* [ ] prawdziwe losowanie 
+* [ ] custom liked playlist 
